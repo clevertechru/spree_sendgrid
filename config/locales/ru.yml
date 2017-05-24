@@ -1,0 +1,10 @@
+ru:
+  spree:
+    email_preferences: Настройки e-mail
+    newsletter: Новостные подписки
+    availability_alert: Уведомить о наличии
+    state_availability: Уведомить о наличии
+    new_products: Новые товары
+    subscribe: Подписка
+    subscription: Подписка
+    submit: Подтвердить

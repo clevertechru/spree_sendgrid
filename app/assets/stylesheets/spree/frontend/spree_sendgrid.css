@@ -1,0 +1,6 @@
+/*
+ *= require spree/frontend
+*/
+
+#news_subscription_preferences label {display:inline-block;width:100px;}
+#news_subscription_preferences {margin-bottom:12px;}

@@ -1,0 +1,26 @@
+#email_preferences.panel.panel-default{"data-hook" => "email_preferences"}
+	.panel-heading
+		%h1.panel-title
+			= Spree.t(:email_preferences)
+	.panel-body
+		= form_for @user, url: update_news_subscriptions_admin_user_path(@user), method: 'put', html: {class: 'ajax_form', id: 'change_news_subscriptions'} do |f|
+			.row
+				#news_subscription_preferences.form-group.col-md-6
+					.checkbox
+						= f.label :newsletter do
+							= f.check_box :preferred_newsletter_subscription
+							= Spree.t('newsletter')
+					.checkbox
+						= f.label :state_availability do
+							= f.check_box :preferred_availability_subscription
+							= Spree.t('state_availability')
+					.checkbox
+						= f.label :new_products do
+							= f.check_box :preferred_new_product_subscription
+							= Spree.t('new_products')
+			-#= f.submit 'Update', :class => 'button'
+			%div{data: {hook: "admin_user_edit_form_button"}}
+				= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: spree.admin_users_url }
+:css
+	#email_preferences {position:relative;}
+	#email_preferences input.button {position:absolute;left:170px;top:0;}

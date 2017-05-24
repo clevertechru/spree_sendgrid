@@ -1,4 +1,4 @@
-Spree::Core::Engine.routes.prepend do
+Spree::Core::Engine.routes.draw do
   
   # routes for news subscription:
   resources :news_subscriptions

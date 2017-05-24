@@ -5,15 +5,14 @@ module Spree
     
     # These correspond to the preferences in the user model, add _subscription to get to the preference
     KINDS = [:newsletter, :availability, :new_product]
-    attr_accessible :kind, :email, :user_id, :source
     belongs_to :user
     validates_presence_of :email
     validates_uniqueness_of :email, :scope => :kind
     
     
-    scope :newsletter, where(:kind => 'newsletter')
-    scope :availability, where(:kind => 'availability')
-    scope :new_product, where(:kind => 'new_product')
+    scope :newsletter,   -> { where(kind: 'newsletter') }
+    scope :availability, -> { where(kind: 'availability') }
+    scope :new_product,  -> { where(kind: 'new_product') }
     
     def to_preference
       "preferred_#{self.kind}_subscription"
@@ -35,6 +34,7 @@ module Spree
     def update_user_preferences(subscribe)
       if user = Spree::User.find_by_email(self.email)
         eval "user.#{self.to_preference} = #{subscribe}"
+        user.save
       end
     end
     
